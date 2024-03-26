@@ -1,2 +1,5 @@
 This is the journey of me solving leetcode problems.
-only the problem statement and funtion is written but main funtion is not written.
+Only the problem statement and funtion is written but main funtion is not written.
+
+I am following Striver's A to Z DSA course : 
+ https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/
