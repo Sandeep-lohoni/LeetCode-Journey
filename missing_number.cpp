@@ -1,7 +1,5 @@
 // Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
 
- 
-
 // Example 1:
 
 // Input: nums = [3,0,1]
@@ -17,7 +15,6 @@
 // Input: nums = [9,6,4,2,3,5,7,0,1]
 // Output: 8
 // Explanation: n = 9 since there are 9 numbers, so all numbers are in the range [0,9]. 8 is the missing number in the range since it does not appear in nums.
- 
 
 // Constraints:
 
@@ -27,17 +24,20 @@
 // All the numbers of nums are unique.
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int missingNumber(vector<int>& nums) {
-        int n=nums.size();
-        int xor1=0,xor2=0;
-        for(int i=0;i<n;++i){
-            xor2=xor2^nums[i];
-            xor1=xor1^(i+1);
+    int missingNumber(vector<int> &nums)
+    {
+        int n = nums.size();
+        int xor1 = 0, xor2 = 0;
+        for (int i = 0; i < n; ++i)
+        {
+            xor2 = xor2 ^ nums[i];
+            xor1 = xor1 ^ (i + 1);
         }
-        return xor1^xor2;
+        return xor1 ^ xor2;
     }
 };

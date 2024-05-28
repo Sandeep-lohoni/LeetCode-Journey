@@ -27,18 +27,23 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    string largestOddNumber(string num) {
-        string temp="";
-        bool append=false;
-        for(int i=num.size()-1;i>=0;--i){
-              if((num[i]-'0')&1) append=true;
-              if(append) {
-                temp+=num[i];
-              } 
-        }
-        reverse(temp.begin(),temp.end());
-        return temp;
+  string largestOddNumber(string num)
+  {
+    string temp = "";
+    bool append = false;
+    for (int i = num.size() - 1; i >= 0; --i)
+    {
+      if ((num[i] - '0') & 1)
+        append = true;
+      if (append)
+      {
+        temp += num[i];
+      }
     }
+    reverse(temp.begin(), temp.end());
+    return temp;
+  }
 };

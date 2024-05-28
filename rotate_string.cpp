@@ -21,11 +21,14 @@
 // solution
 #include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    bool rotateString(string s, string goal) {
-        if(s.size()!=goal.size()) return false;
-        string sstring = s+s;
-        return sstring.find(goal)!= string::npos;   
+    bool rotateString(string s, string goal)
+    {
+        if (s.size() != goal.size())
+            return false;
+        string sstring = s + s;
+        return sstring.find(goal) != string::npos;
     }
 };

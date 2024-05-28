@@ -1,10 +1,8 @@
-// Given an integer array nums of unique elements, return all possible 
+// Given an integer array nums of unique elements, return all possible
 // subsets
 //  (the power set).
 
 // The solution set must not contain duplicate subsets. Return the solution in any order.
-
- 
 
 // Example 1:
 
@@ -14,7 +12,6 @@
 
 // Input: nums = [0]
 // Output: [[],[0]]
- 
 
 // Constraints:
 
@@ -24,24 +21,28 @@
 
 // solution
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-vector<vector<int>> sets;
-   void generate(vector<int> sub, int i, vector<int>& nums){
-            if(i==nums.size()){
-                sets.push_back(sub);
-                return;
-            }
-            generate(sub,i+1,nums);
-            sub.push_back(nums[i]);
-            generate(sub, i+1, nums);
-            sub.pop_back();
-   }
-    vector<vector<int>> subsets(vector<int>& nums) {
+    vector<vector<int>> sets;
+    void generate(vector<int> sub, int i, vector<int> &nums)
+    {
+        if (i == nums.size())
+        {
+            sets.push_back(sub);
+            return;
+        }
+        generate(sub, i + 1, nums);
+        sub.push_back(nums[i]);
+        generate(sub, i + 1, nums);
+        sub.pop_back();
+    }
+    vector<vector<int>> subsets(vector<int> &nums)
+    {
         vector<int> empty;
-        generate(empty,0,nums);
+        generate(empty, 0, nums);
         return sets;
     }
 };

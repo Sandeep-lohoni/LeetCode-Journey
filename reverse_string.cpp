@@ -13,17 +13,23 @@
 // -231 <= x <= 231 - 1
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int reverse(int x) {
-        int ans=0;
-        while(x!=0){
-            int last=x%10;
-            x=x/10;
-            if(ans>INT_MAX/10 || ans<INT_MIN/10){return 0;}
-            ans=(ans*10)+last;
+    int reverse(int x)
+    {
+        int ans = 0;
+        while (x != 0)
+        {
+            int last = x % 10;
+            x = x / 10;
+            if (ans > INT_MAX / 10 || ans < INT_MIN / 10)
+            {
+                return 0;
+            }
+            ans = (ans * 10) + last;
         }
         return ans;
     }

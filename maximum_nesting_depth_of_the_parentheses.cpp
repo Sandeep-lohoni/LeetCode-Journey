@@ -13,8 +13,6 @@
 
 // Given a VPS represented as string s, return the nesting depth of s.
 
- 
-
 // Example 1:
 
 // Input: s = "(1+(2*3)+((8)/4))+1"
@@ -24,7 +22,6 @@
 
 // Input: s = "(1)+((2))+(((3)))"
 // Output: 3
- 
 
 // Constraints:
 
@@ -33,17 +30,22 @@
 // It is guaranteed that parentheses expression s is a VPS.
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int maxDepth(string s) {
-        int cnt=0;
-        int maxcnt=0;
-        for(auto c : s){
-            if(c=='(') cnt++;
-            if(c==')') cnt--;
-            maxcnt=max(maxcnt,cnt);
+    int maxDepth(string s)
+    {
+        int cnt = 0;
+        int maxcnt = 0;
+        for (auto c : s)
+        {
+            if (c == '(')
+                cnt++;
+            if (c == ')')
+                cnt--;
+            maxcnt = max(maxcnt, cnt);
         }
         return maxcnt;
     }

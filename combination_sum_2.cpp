@@ -4,12 +4,10 @@
 
 // Note: The solution set must not contain duplicate combinations.
 
- 
-
 // Example 1:
 
 // Input: candidates = [10,1,2,7,6,1,5], target = 8
-// Output: 
+// Output:
 // [
 // [1,1,6],
 // [1,2,5],
@@ -19,12 +17,11 @@
 // Example 2:
 
 // Input: candidates = [2,5,2,1,2], target = 5
-// Output: 
+// Output:
 // [
 // [1,2,2],
 // [5]
 // ]
- 
 
 // Constraints:
 
@@ -34,28 +31,35 @@
 
 // solution
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    void helper(int index,int target, vector<vector<int>> &ans,vector<int>& candidates,vector<int>&ds){
-        if(target==0){
+    void helper(int index, int target, vector<vector<int>> &ans, vector<int> &candidates, vector<int> &ds)
+    {
+        if (target == 0)
+        {
             ans.push_back(ds);
             return;
         }
-        for(int i=index;i<candidates.size();++i){
-            if(i>index && candidates[i]==candidates[i-1]) continue;
-            if(candidates[i]>target) break;
+        for (int i = index; i < candidates.size(); ++i)
+        {
+            if (i > index && candidates[i] == candidates[i - 1])
+                continue;
+            if (candidates[i] > target)
+                break;
             ds.push_back(candidates[i]);
-            helper(i+1,target-candidates[i],ans,candidates,ds);
+            helper(i + 1, target - candidates[i], ans, candidates, ds);
             ds.pop_back();
         }
     }
-    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
-        sort(candidates.begin(),candidates.end());
-        vector<vector<int>>ans;
-        vector<int>ds;
-        helper(0,target,ans,candidates,ds);
+    vector<vector<int>> combinationSum2(vector<int> &candidates, int target)
+    {
+        sort(candidates.begin(), candidates.end());
+        vector<vector<int>> ans;
+        vector<int> ds;
+        helper(0, target, ans, candidates, ds);
         return ans;
     }
 };

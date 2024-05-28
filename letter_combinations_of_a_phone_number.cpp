@@ -2,9 +2,6 @@
 
 // A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
 
-
- 
-
 // Example 1:
 
 // Input: digits = "23"
@@ -17,7 +14,6 @@
 
 // Input: digits = "2"
 // Output: ["a","b","c"]
- 
 
 // Constraints:
 
@@ -26,11 +22,12 @@
 
 // solution
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    unordered_map<char, string> mp={
+    unordered_map<char, string> mp = {
         {'2', "abc"},
         {'3', "def"},
         {'4', "ghi"},
@@ -38,25 +35,29 @@ public:
         {'6', "mno"},
         {'7', "pqrs"},
         {'8', "tuv"},
-        {'9', "wxyz"}
-    };
-    void helper(string & digits,vector<string>&ans, int ind, string output){
-        if(ind>=digits.length()){
+        {'9', "wxyz"}};
+    void helper(string &digits, vector<string> &ans, int ind, string output)
+    {
+        if (ind >= digits.length())
+        {
             ans.push_back(output);
             return;
         }
-        string temp=mp[digits[ind]];
-        for(int i=0;i<temp.length();++i){
-            helper(digits,ans,ind+1,output+temp[i]);
+        string temp = mp[digits[ind]];
+        for (int i = 0; i < temp.length(); ++i)
+        {
+            helper(digits, ans, ind + 1, output + temp[i]);
         }
     }
-    vector<string> letterCombinations(string digits) {
+    vector<string> letterCombinations(string digits)
+    {
         vector<string> ans;
-        if(digits.size()==0){
+        if (digits.size() == 0)
+        {
             return {};
         }
-        string output="";
-        helper(digits,ans,0,output);
+        string output = "";
+        helper(digits, ans, 0, output);
         return ans;
     }
 };

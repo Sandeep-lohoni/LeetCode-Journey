@@ -35,13 +35,17 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int minOperations(vector<int>& nums, int k) {
-          int n=nums.size();
-        int j=0;
-        for(int i=0;i<n;++i){
-            if(k>nums[i]){
+    int minOperations(vector<int> &nums, int k)
+    {
+        int n = nums.size();
+        int j = 0;
+        for (int i = 0; i < n; ++i)
+        {
+            if (k > nums[i])
+            {
                 j++;
             }
         }

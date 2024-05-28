@@ -33,22 +33,26 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-int maxFrequency(vector<int>& nums, int k) {
-    sort(nums.begin(), nums.end());
-    int n = nums.size();
-    long long total = 0;
-    int left = 0;
-    int res = 1;
-    for (int right = 1; right < n; ++right) {
-        total += (long long)(nums[right] - nums[right - 1]) * (right - left);
-        while (total > k) {
-            total -= nums[right] - nums[left];
-            ++left;
-        }   
-        res = max(res, right - left + 1);
-    }   
-    return res;
-}
+    int maxFrequency(vector<int> &nums, int k)
+    {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        long long total = 0;
+        int left = 0;
+        int res = 1;
+        for (int right = 1; right < n; ++right)
+        {
+            total += (long long)(nums[right] - nums[right - 1]) * (right - left);
+            while (total > k)
+            {
+                total -= nums[right] - nums[left];
+                ++left;
+            }
+            res = max(res, right - left + 1);
+        }
+        return res;
+    }
 };

@@ -18,24 +18,29 @@
 // solution
 #include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    vector<int> generatearr(int row){
-        long long ans=1;
+    vector<int> generatearr(int row)
+    {
+        long long ans = 1;
         vector<int> ansRow;
         ansRow.push_back(ans);
-        for(int col=1;col<row;++col){
-            ans=ans*(row-col);
-            ans=ans/col;
+        for (int col = 1; col < row; ++col)
+        {
+            ans = ans * (row - col);
+            ans = ans / col;
             ansRow.push_back(ans);
         }
         return ansRow;
     }
-    vector<vector<int>> generate(int numRows) {
+    vector<vector<int>> generate(int numRows)
+    {
         vector<vector<int>> temp;
-        for(int i=1;i<=numRows;i++){
+        for (int i = 1; i <= numRows; i++)
+        {
             temp.push_back(generatearr(i));
-        }  
+        }
         return temp;
     }
 };

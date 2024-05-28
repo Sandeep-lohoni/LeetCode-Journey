@@ -34,22 +34,27 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    vector<int> rearrangeArray(vector<int>& nums) {
-    int n=nums.size();
-    vector<int> temp(n,0);
-    int po=0,ne=1;
-    for(int i=0;i<n;++i){
-        if(nums[i]>0){
-            temp[po]=nums[i];
-            po+=2;
+    vector<int> rearrangeArray(vector<int> &nums)
+    {
+        int n = nums.size();
+        vector<int> temp(n, 0);
+        int po = 0, ne = 1;
+        for (int i = 0; i < n; ++i)
+        {
+            if (nums[i] > 0)
+            {
+                temp[po] = nums[i];
+                po += 2;
+            }
+            else
+            {
+                temp[ne] = nums[i];
+                ne += 2;
+            }
         }
-        else{
-            temp[ne]=nums[i];
-            ne+=2;
-        }
-    }
-    return temp;
+        return temp;
     }
 };

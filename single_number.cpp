@@ -22,15 +22,18 @@
 // Each element in the array appears twice except for one element which appears only once
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int singleNumber(vector<int>& nums) {
-        int n=nums.size();
-        int x=0;
-        for(int i=0;i<n;++i){
-            x=x^nums[i];
+    int singleNumber(vector<int> &nums)
+    {
+        int n = nums.size();
+        int x = 0;
+        for (int i = 0; i < n; ++i)
+        {
+            x = x ^ nums[i];
         }
         return x;
     }

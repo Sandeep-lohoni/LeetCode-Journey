@@ -12,7 +12,6 @@
 
 // Only the space character ' ' is considered a whitespace character.
 // Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.
- 
 
 // Example 1:
 
@@ -53,43 +52,51 @@
 //              ^
 // The parsed integer is 4193.
 // Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
- 
 
 // Constraints:
 
 // 0 <= s.length <= 200
 // s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+', '-', and '.'.
 
-
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    long recursiveatoi(string s, int sign, int i, long result) {
-        if (sign * result >= INT_MAX) {
+    long recursiveatoi(string s, int sign, int i, long result)
+    {
+        if (sign * result >= INT_MAX)
+        {
             return INT_MAX;
         }
-        if (sign * result <= INT_MIN) {
+        if (sign * result <= INT_MIN)
+        {
             return INT_MIN;
         }
-        if (i >= s.size() || s[i] < '0' || s[i] > '9') {
+        if (i >= s.size() || s[i] < '0' || s[i] > '9')
+        {
             return sign * result;
         }
         result = recursiveatoi(s, sign, i + 1, (10 * result + (s[i] - '0')));
         return result;
     }
-    int myAtoi(string s) {
+    int myAtoi(string s)
+    {
         int n = s.size();
         int i = 0;
         int sign = 1;
-        while (i < n && s[i] == ' ') {
+        while (i < n && s[i] == ' ')
+        {
             i++;
         }
-        if (s[i] == '-') {
+        if (s[i] == '-')
+        {
             sign = -1;
             i++;
-        } else if (s[i] == '+') {
+        }
+        else if (s[i] == '+')
+        {
             i++;
         }
         return recursiveatoi(s, sign, i, 0);

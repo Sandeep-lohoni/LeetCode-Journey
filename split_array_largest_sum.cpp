@@ -24,39 +24,48 @@
 // 1 <= k <= min(50, nums.length)
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 private:
-    int countPartition(vector<int>&nums,int parts){
-        int n=nums.size();
-        int size=1;
-        long long sumparts=0;
-        for(int i=0;i<n;++i){
-            if(sumparts+nums[i]<=parts){
-                sumparts+=nums[i];
+    int countPartition(vector<int> &nums, int parts)
+    {
+        int n = nums.size();
+        int size = 1;
+        long long sumparts = 0;
+        for (int i = 0; i < n; ++i)
+        {
+            if (sumparts + nums[i] <= parts)
+            {
+                sumparts += nums[i];
             }
-            else{
+            else
+            {
                 size++;
-                sumparts=nums[i];
+                sumparts = nums[i];
             }
         }
         return size;
     }
 
 public:
-    int splitArray(vector<int>& nums, int k) {
-        int n=nums.size();
-        int low=*max_element(nums.begin(),nums.end());
-        int high=accumulate(nums.begin(),nums.end(),0);
-        while(low<=high){
-            int mid=(low+high)/2;
-            int size=countPartition(nums,mid);
-            if(size>k){
-                low=mid+1;
+    int splitArray(vector<int> &nums, int k)
+    {
+        int n = nums.size();
+        int low = *max_element(nums.begin(), nums.end());
+        int high = accumulate(nums.begin(), nums.end(), 0);
+        while (low <= high)
+        {
+            int mid = (low + high) / 2;
+            int size = countPartition(nums, mid);
+            if (size > k)
+            {
+                low = mid + 1;
             }
-            else{
-                high=mid-1;
+            else
+            {
+                high = mid - 1;
             }
         }
         return low;

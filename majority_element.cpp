@@ -20,28 +20,37 @@
 // solution
 #include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int majorityElement(vector<int>& nums) {
-        int cnt=0;
+    int majorityElement(vector<int> &nums)
+    {
+        int cnt = 0;
         int elem;
-        for(int i=0;i<nums.size();++i){
-            if(cnt==0){
-                cnt=1;
-                elem=nums[i];
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            if (cnt == 0)
+            {
+                cnt = 1;
+                elem = nums[i];
             }
-            else if(nums[i]==elem){
+            else if (nums[i] == elem)
+            {
                 cnt++;
             }
-            else{
+            else
+            {
                 cnt--;
             }
         }
-        int c=0;
-        for(int i=0;i<nums.size();++i){
-            if(nums[i]==elem) c++;
+        int c = 0;
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            if (nums[i] == elem)
+                c++;
         }
-        if(c>(nums.size()/2)) return elem;
+        if (c > (nums.size() / 2))
+            return elem;
         return -1;
     }
 };

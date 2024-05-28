@@ -15,21 +15,17 @@
 // For the input, you should provide the entire linked list head and the node to be given node. node should not be the last node of the list and should be an actual node in the list.
 // We will build the linked list and pass the node to your function.
 // The output will be the entire list after calling your function.
- 
 
 // Example 1:
-
 
 // Input: head = [4,5,1,9], node = 5
 // Output: [4,1,9]
 // Explanation: You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function.
 // Example 2:
 
-
 // Input: head = [4,5,1,9], node = 1
 // Output: [4,5,9]
 // Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
- 
 
 // Constraints:
 
@@ -39,20 +35,22 @@
 // The node to be deleted is in the list and is not a tail node.
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 //  * Definition for singly-linked list.
-   struct ListNode {
-       int val;
-       ListNode *next;
-       ListNode(int x) : val(x), next(NULL) {}
-   };
-class Solution {
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode(int x) : val(x), next(NULL) {}
+};
+class Solution
+{
 public:
-    void deleteNode(ListNode* node) {
-        node->val=node->next->val;
-        node->next=node->next->next;
+    void deleteNode(ListNode *node)
+    {
+        node->val = node->next->val;
+        node->next = node->next->next;
     }
 };
-

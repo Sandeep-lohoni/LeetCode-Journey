@@ -12,7 +12,6 @@
 
 // Only the space character ' ' is considered a whitespace character.
 // Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.
- 
 
 // Example 1:
 
@@ -53,7 +52,6 @@
 //              ^
 // The parsed integer is 4193.
 // Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
- 
 
 // Constraints:
 
@@ -61,23 +59,27 @@
 // s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+', '-', and '.'.
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int myAtoi(string s) {
+    int myAtoi(string s)
+    {
         int len = s.size();
         double num = 0;
-        int i=0;
-        while(s[i] == ' '){
+        int i = 0;
+        while (s[i] == ' ')
+        {
             i++;
         }
         bool positive = s[i] == '+';
         bool negative = s[i] == '-';
         positive == true ? i++ : i;
         negative == true ? i++ : i;
-        while(i < len && s[i] >= '0' && s[i] <= '9'){
-            num = num*10 + (s[i]-'0');
+        while (i < len && s[i] >= '0' && s[i] <= '9')
+        {
+            num = num * 10 + (s[i] - '0');
             i++;
         }
         num = negative ? -num : num;

@@ -2,8 +2,6 @@
 
 // If there is no common prefix, return an empty string "".
 
- 
-
 // Example 1:
 
 // Input: strs = ["flower","flow","flight"]
@@ -13,7 +11,6 @@
 // Input: strs = ["dog","racecar","car"]
 // Output: ""
 // Explanation: There is no common prefix among the input strings.
- 
 
 // Constraints:
 
@@ -22,21 +19,26 @@
 // strs[i] consists of only lowercase English letters.
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    string longestCommonPrefix(vector<string>& strs) {
-        sort(strs.begin(),strs.end());
-        int n=strs.size();
-        string temp="";
-        string first=strs[0],last=strs[n-1];
-        for(int i=0;i<min(first.size(),last.size());++i){
-            if(first[i]!=last[i]){
+    string longestCommonPrefix(vector<string> &strs)
+    {
+        sort(strs.begin(), strs.end());
+        int n = strs.size();
+        string temp = "";
+        string first = strs[0], last = strs[n - 1];
+        for (int i = 0; i < min(first.size(), last.size()); ++i)
+        {
+            if (first[i] != last[i])
+            {
                 return temp;
             }
-            else{
-                temp+=first[i];
+            else
+            {
+                temp += first[i];
             }
         }
         return temp;

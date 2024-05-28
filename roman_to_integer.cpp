@@ -12,12 +12,10 @@
 
 // Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used:
 
-// I can be placed before V (5) and X (10) to make 4 and 9. 
-// X can be placed before L (50) and C (100) to make 40 and 90. 
+// I can be placed before V (5) and X (10) to make 4 and 9.
+// X can be placed before L (50) and C (100) to make 40 and 90.
 // C can be placed before D (500) and M (1000) to make 400 and 900.
 // Given a roman numeral, convert it to an integer.
-
- 
 
 // Example 1:
 
@@ -34,7 +32,6 @@
 // Input: s = "MCMXCIV"
 // Output: 1994
 // Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
- 
 
 // Constraints:
 
@@ -43,11 +40,13 @@
 // It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int romanToInt(string s) {
+    int romanToInt(string s)
+    {
         unordered_map<char, int> mp;
         mp['I'] = 1;
         mp['V'] = 5;
@@ -56,12 +55,15 @@ public:
         mp['C'] = 100;
         mp['D'] = 500;
         mp['M'] = 1000;
-        int ans=0;
-        for(int i=0;i<s.size();++i){
-            if(mp[s[i]]<mp[s[i+1]]){
-                ans-=mp[s[i]];
+        int ans = 0;
+        for (int i = 0; i < s.size(); ++i)
+        {
+            if (mp[s[i]] < mp[s[i + 1]])
+            {
+                ans -= mp[s[i]];
             }
-            else ans+=mp[s[i]];
+            else
+                ans += mp[s[i]];
         }
         return ans;
     }

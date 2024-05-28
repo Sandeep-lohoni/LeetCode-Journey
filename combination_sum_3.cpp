@@ -4,8 +4,6 @@
 // Each number is used at most once.
 // Return a list of all possible valid combinations. The list must not contain the same combination twice, and the combinations may be returned in any order.
 
- 
-
 // Example 1:
 
 // Input: k = 3, n = 7
@@ -28,7 +26,6 @@
 // Output: []
 // Explanation: There are no valid combinations.
 // Using 4 different numbers in the range [1,9], the smallest sum we can get is 1+2+3+4 = 10 and since 10 > 1, there are no valid combination.
- 
 
 // Constraints:
 
@@ -36,32 +33,38 @@
 // 1 <= n <= 60
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    void helper(int k, int n, vector<int>&nums, vector<vector<int>>&mp,vector<int>&opp,int ind, int sum){
-        if(k==0){
-            if(sum==n){
-                sort(opp.begin(),opp.end());
+    void helper(int k, int n, vector<int> &nums, vector<vector<int>> &mp, vector<int> &opp, int ind, int sum)
+    {
+        if (k == 0)
+        {
+            if (sum == n)
+            {
+                sort(opp.begin(), opp.end());
                 mp.push_back(opp);
             }
             return;
         }
-        for(int i=ind;i<9;++i){
-            sum+=nums[i];
+        for (int i = ind; i < 9; ++i)
+        {
+            sum += nums[i];
             opp.push_back(nums[i]);
-            helper(k-1,n,nums,mp,opp,i+1,sum);
-            sum-=nums[i];
+            helper(k - 1, n, nums, mp, opp, i + 1, sum);
+            sum -= nums[i];
             opp.pop_back();
         }
         return;
     }
-    vector<vector<int>> combinationSum3(int k, int n) {
-        vector<int> nums={1,2,3,4,5,6,7,8,9};
+    vector<vector<int>> combinationSum3(int k, int n)
+    {
+        vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         vector<vector<int>> mp;
         vector<int> opp;
-        helper(k,n,nums,mp,opp,0,0);
+        helper(k, n, nums, mp, opp, 0, 0);
         return mp;
     }
 };

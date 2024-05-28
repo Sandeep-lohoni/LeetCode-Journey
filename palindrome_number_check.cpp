@@ -24,23 +24,34 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    bool isPalindrome(int x) {
-        if(x>=0){
+    bool isPalindrome(int x)
+    {
+        if (x >= 0)
+        {
 
-        int rel=x;
-        long ans=0;
-        while(x!=0){
-            int last=x%10;
-            x=x/10;
-            ans=(ans*10)+last;
+            int rel = x;
+            long ans = 0;
+            while (x != 0)
+            {
+                int last = x % 10;
+                x = x / 10;
+                ans = (ans * 10) + last;
+            }
+            if (rel == ans)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-        if(rel==ans){return true;}
-        else{return false;}
-     }
-     else{
-        return false;
-     }
+        else
+        {
+            return false;
+        }
     }
 };

@@ -19,8 +19,6 @@
 // }
 // If all assertions pass, then your solution will be accepted.
 
- 
-
 // Example 1:
 
 // Input: nums = [1,1,2]
@@ -33,7 +31,6 @@
 // Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
 // Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
 // It does not matter what you leave beyond the returned k (hence they are underscores).
- 
 
 // Constraints:
 
@@ -43,18 +40,23 @@
 
 // solution
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int removeDuplicates(vector<int>& nums) {
-        if(nums.empty()) return 0;
-        int n=nums.size();
-        int i=1;
-        for(int j=1;j<n;++j){
-            if(nums[j]!=nums[j-1]){
-                nums[i++]=nums[j];
-            } 
+    int removeDuplicates(vector<int> &nums)
+    {
+        if (nums.empty())
+            return 0;
+        int n = nums.size();
+        int i = 1;
+        for (int j = 1; j < n; ++j)
+        {
+            if (nums[j] != nums[j - 1])
+            {
+                nums[i++] = nums[j];
+            }
         }
         return i;
     }

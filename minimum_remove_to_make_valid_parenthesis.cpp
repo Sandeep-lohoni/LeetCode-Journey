@@ -7,7 +7,6 @@
 // It is the empty string, contains only lowercase characters, or
 // It can be written as AB (A concatenated with B), where A and B are valid strings, or
 // It can be written as (A), where A is a valid string.
- 
 
 // Example 1:
 
@@ -23,7 +22,6 @@
 // Input: s = "))(("
 // Output: ""
 // Explanation: An empty string is also valid.
- 
 
 // Constraints:
 
@@ -32,37 +30,47 @@
 
 // solution
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    string minRemoveToMakeValid(string s) {
+    string minRemoveToMakeValid(string s)
+    {
         stack<char> st;
-        int leftpara=0;
-        int rightpara=0;
-        for(char ch: s){
-            if(ch=='(') leftpara++;
-            else if(ch==')') rightpara++;
-            if(rightpara>leftpara){
+        int leftpara = 0;
+        int rightpara = 0;
+        for (char ch : s)
+        {
+            if (ch == '(')
+                leftpara++;
+            else if (ch == ')')
+                rightpara++;
+            if (rightpara > leftpara)
+            {
                 rightpara--;
                 continue;
             }
-            else{
+            else
+            {
                 st.push(ch);
             }
         }
-        string rel="";
-        while(!st.empty()){
-            char currentchar=st.top();
+        string rel = "";
+        while (!st.empty())
+        {
+            char currentchar = st.top();
             st.pop();
-            if(leftpara>rightpara && currentchar=='('){
+            if (leftpara > rightpara && currentchar == '(')
+            {
                 leftpara--;
             }
-            else{
-                 rel+=currentchar;
+            else
+            {
+                rel += currentchar;
             }
         }
-        reverse(rel.begin(),rel.end());
+        reverse(rel.begin(), rel.end());
         return rel;
     }
 };

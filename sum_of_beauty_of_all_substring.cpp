@@ -3,8 +3,6 @@
 // For example, the beauty of "abaacc" is 3 - 1 = 2.
 // Given a string s, return the sum of beauty of all of its substrings.
 
- 
-
 // Example 1:
 
 // Input: s = "aabcb"
@@ -14,7 +12,6 @@
 
 // Input: s = "aabcbaa"
 // Output: 17
- 
 
 // Constraints:
 
@@ -22,28 +19,35 @@
 // s consists of only lowercase English letters.
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int beauty(vector<int>& arr){
-       int mf=-1;
-       int lf=1e9;
-       for(int i=0;i<26;++i){
-        mf=max(mf,arr[i]);
-        if(arr[i]>=1){
-            lf=min(lf,arr[i]);
+    int beauty(vector<int> &arr)
+    {
+        int mf = -1;
+        int lf = 1e9;
+        for (int i = 0; i < 26; ++i)
+        {
+            mf = max(mf, arr[i]);
+            if (arr[i] >= 1)
+            {
+                lf = min(lf, arr[i]);
+            }
         }
-       }
-       return mf-lf;   
+        return mf - lf;
     }
-    int beautySum(string s) {
-        int rel=0;
-        for(int i=0;i<s.size();++i){
-            vector<int> arr(26,0);
-            for(int j=i;j<s.size();++j){
-                arr[s[j]-'a']++;
-                rel+=beauty(arr);
+    int beautySum(string s)
+    {
+        int rel = 0;
+        for (int i = 0; i < s.size(); ++i)
+        {
+            vector<int> arr(26, 0);
+            for (int j = i; j < s.size(); ++j)
+            {
+                arr[s[j] - 'a']++;
+                rel += beauty(arr);
             }
         }
         return rel;

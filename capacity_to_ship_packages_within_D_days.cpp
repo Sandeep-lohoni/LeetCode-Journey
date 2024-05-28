@@ -40,26 +40,33 @@
 // 1 <= weights[i] <= 500
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    int days(vector<int>& weights, int cap) {
+    int days(vector<int> &weights, int cap)
+    {
         int load = 0;
         int day = 1;
-        for (int i = 0; i < weights.size(); ++i) {
-            if (load + weights[i] > cap) {
+        for (int i = 0; i < weights.size(); ++i)
+        {
+            if (load + weights[i] > cap)
+            {
                 day += 1;
                 load = weights[i];
-            } else
+            }
+            else
                 load += weights[i];
         }
         return day;
     }
-    int shipWithinDays(vector<int>& weights, int d) {
+    int shipWithinDays(vector<int> &weights, int d)
+    {
         int low = *max_element(weights.begin(), weights.end());
         int high = accumulate(weights.begin(), weights.end(), 0);
-        while (low <= high) {
+        while (low <= high)
+        {
             int mid = (low + high) / 2;
             int reqdays = days(weights, mid);
             if (reqdays <= d)

@@ -2,8 +2,6 @@
 
 // Given a string s, return true if it is a palindrome, or false otherwise.
 
- 
-
 // Example 1:
 
 // Input: s = "A man, a plan, a canal: Panama"
@@ -20,7 +18,6 @@
 // Output: true
 // Explanation: s is an empty string "" after removing non-alphanumeric characters.
 // Since an empty string reads the same forward and backward, it is a palindrome.
- 
 
 // Constraints:
 
@@ -29,18 +26,22 @@
 
 // solution
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    bool isPalindrome(string s) {
-    string cleaned_str;
-    for (char c : s) {
-        if (isalnum(c)) {
-            cleaned_str += tolower(c);
+    bool isPalindrome(string s)
+    {
+        string cleaned_str;
+        for (char c : s)
+        {
+            if (isalnum(c))
+            {
+                cleaned_str += tolower(c);
+            }
         }
-    }
-    string reversed_str(cleaned_str.rbegin(), cleaned_str.rend());
-    return cleaned_str == reversed_str;
+        string reversed_str(cleaned_str.rbegin(), cleaned_str.rend());
+        return cleaned_str == reversed_str;
     }
 };

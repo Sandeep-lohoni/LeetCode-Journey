@@ -22,7 +22,7 @@
 // Output: "bbAa"
 // Explanation: "bbaA" is also a valid answer, but "Aabb" is incorrect.
 // Note that 'A' and 'a' are treated as two different characters.
- 
+
 
 // Constraints:
 
@@ -30,26 +30,31 @@
 // s consists of uppercase and lowercase English letters and digits.
 
 // solution
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution {
+class Solution
+{
 public:
-    string frequencySort(string& s) {
-        using int_char=pair<int, char>;
-        int freq[75];    
-        for(char c : s)
-            freq[c-'0']++;
+    string frequencySort(string &s)
+    {
+        using int_char = pair<int, char>;
+        int freq[75];
+        for (char c : s)
+            freq[c - '0']++;
 
         vector<int_char> freq_c;
-        for(char c='0'; c<='z'; c++){
-            if (freq[c-'0']==0) continue;
-            freq_c.emplace_back(freq[c-'0'], c);
+        for (char c = '0'; c <= 'z'; c++)
+        {
+            if (freq[c - '0'] == 0)
+                continue;
+            freq_c.emplace_back(freq[c - '0'], c);
         }
         sort(freq_c.begin(), freq_c.end(), greater<int_char>());
         string ans;
-        for (auto& [n, c]: freq_c){
-            ans+=string(n, c);
+        for (auto &[n, c] : freq_c)
+        {
+            ans += string(n, c);
         }
-        return ans;       
+        return ans;
     }
 };
