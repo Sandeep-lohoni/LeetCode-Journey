@@ -41,7 +41,7 @@ public:
         vector<int> ans;
         if (root == NULL)
             return ans;
-        stack<TreeNode *> st;
+        stack<TreeNode*> st;
         TreeNode *node = root;
         while (true)
         {
