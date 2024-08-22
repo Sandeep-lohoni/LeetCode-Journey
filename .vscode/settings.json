@@ -1,4 +1,7 @@
 {
+    "[cpp]": {
+        "editor.wordWrap": "on"
+    },
     "files.associations": {
         "*.json": "jsonc",
         "array": "cpp",
