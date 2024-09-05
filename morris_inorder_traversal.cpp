@@ -46,7 +46,7 @@ struct TreeNode
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
-
+// inorder traversal using morris traversal
 class Solution
 {
 public:
@@ -86,4 +86,3 @@ public:
         return ans;
     }
 };
-
