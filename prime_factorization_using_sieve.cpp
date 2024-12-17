@@ -27,16 +27,17 @@ using namespace std;
 class Solution
 {
 public:
-    vector<int> prime(N + 1);
-    void sieve()
+    vector<int> findPrimeFactors(int N)
     {
+        // Write your code here
+        vector<int> prime(N +1);
         for (int i = 1; i <= N; ++i)
         {
             prime[i] = i;
         }
         for (int i = 2; i * i < N; ++i)
         {
-            if (prime[i] = i)
+            if (prime[i] == i)
             {
                 for (int j = i * i; j <= N; j += i)
                 {
@@ -47,11 +48,6 @@ public:
                 }
             }
         }
-    }
-
-    vector<int> findPrimeFactors(int N)
-    {
-        // Write your code here
         vector<int> ans;
         for (int i = 0; i < N; ++i)
         {
