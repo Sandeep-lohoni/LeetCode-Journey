@@ -28,37 +28,55 @@ using namespace std;
 class Solution
 {
 public:
+    int largestRectangleArea(vector<int> heights)
+    {
+        stack<int> st;
+        int maxi = 0;
+        int n = heights.size();
+        for (int i = 0; i < n; ++i)
+        {
+            while (!st.empty() && heights[st.top()] > heights[i])
+            {
+                int element = st.top();
+                st.pop();
+                int nse = i;
+                int pse = st.empty() ? -1 : st.top();
+                maxi = max(maxi, heights[element] * (nse - pse - 1));
+            }
+            st.push(i);
+        }
+        while (!st.empty())
+        {
+            int nse = n;
+            int element = st.top();
+            st.pop();
+            int pse = st.empty() ? -1 : st.top();
+            maxi = max(maxi, heights[element] * (nse - pse - 1));
+        }
+        return maxi;
+    }
     int maximalRectangle(vector<vector<char>> &matrix)
     {
-        if (matrix.empty() || matrix[0].empty())
-            return 0;
-        int rows = matrix.size();
-        int cols = matrix[0].size();
-        vector<int> heights(cols + 1, 0);
-        int maxArea = 0;
-        for (const auto &row : matrix)
+        int n = matrix.size();
+        int m = matrix[0].size();
+        int ans = 0;
+        vector<vector<int>> psum(n, vector<int>(m, 0));
+        for (int j = 0; j < m; ++j)
         {
-            for (int i = 0; i < cols; i++)
+            int sum = 0;
+            for (int i = 0; i < n; ++i)
             {
-                if (row[i] == '1')
-                    heights[i] = heights[i] + 1;
-                else
-                    heights[i] = 0;
-            }
-            stack<int> stk;
-            for (int i = 0; i < heights.size(); i++)
-            {
-                while (!stk.empty() && heights[i] < heights[stk.top()])
-                {
-                    int h = heights[stk.top()];
-                    stk.pop();
-                    int w = stk.empty() ? i : i - stk.top() - 1;
-                    maxArea = max(maxArea, h * w);
-                }
-                stk.push(i);
+                if (matrix[i][j] == '1')
+                    sum++;
+                if (matrix[i][j] == '0')
+                    sum = 0;
+                psum[i][j] = sum;
             }
         }
-
-        return maxArea;
+        for (int i = 0; i < n; ++i)
+        {
+            ans = max(ans, largestRectangleArea(psum[i]));
+        }
+        return ans;
     }
 };
