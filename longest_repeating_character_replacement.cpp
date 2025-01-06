@@ -42,10 +42,6 @@ public:
             {
                 freq[s[left] - 'A']--;
                 maxfreq = 0;
-                for (int i = 0; i < 26; ++i)
-                {
-                    maxfreq = max(maxfreq, freq[i]);
-                }
                 left++;
             }
             if (((right - left + 1) - maxfreq) <= k)
