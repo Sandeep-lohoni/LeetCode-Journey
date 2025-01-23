@@ -26,7 +26,7 @@ public:
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
         vector<int> dist(n + 1, 1e9);
         vector<int> parent(n + 1);
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < n + 1; ++i)
             parent[i] = i;
         pq.push({0, 1});
         dist[1] = 0;
