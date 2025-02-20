@@ -35,27 +35,28 @@ class Solution
 public:
     string reverseWords(string s)
     {
-        reverse(s.begin(), s.end());
-        int n = s.size();
+        int i = 0;
         int left = 0;
         int right = 0;
-        int i = 0;
+        int n = s.size();
+        reverse(s.begin(), s.end());
         while (i < n)
         {
-            while (i < n && s[i] == ' ')
-                i++;
-            if (i == n)
-                break;
             while (i < n && s[i] != ' ')
             {
-                s[right++] = s[i++];
+                s[right] = s[i];
+                i++;
+                right++;
             }
-            reverse(s.begin() + left, s.begin() + right);
-            s[right++] = ' ';
-            left = right;
+            if (left < right)
+            {
+                reverse(s.begin() + left, s.begin() + right);
+                s[right] = ' ';
+                right++;
+                left = right;
+            }
             i++;
         }
-        s.resize(right - 1);
-        return s;
+        return s.substr(0, right - 1);
     }
 };

@@ -32,18 +32,13 @@ class Solution
 public:
   string largestOddNumber(string num)
   {
-    string temp = "";
-    bool append = false;
     for (int i = num.size() - 1; i >= 0; --i)
     {
-      if ((num[i] - '0') & 1)
-        append = true;
-      if (append)
+      if ((num[i] - '0') % 2 != 0)
       {
-        temp += num[i];
+        return num.substr(0, i + 1);
       }
     }
-    reverse(temp.begin(), temp.end());
-    return temp;
+    return "";
   }
 };
