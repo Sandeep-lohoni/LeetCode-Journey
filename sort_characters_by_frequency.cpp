@@ -32,29 +32,27 @@
 // solution
 #include <bits/stdc++.h>
 using namespace std;
-class Solution
-{
+class Solution {
 public:
-    string frequencySort(string &s)
-    {
-        using int_char = pair<int, char>;
-        int freq[75];
-        for (char c : s)
-            freq[c - '0']++;
-
-        vector<int_char> freq_c;
-        for (char c = '0'; c <= 'z'; c++)
-        {
-            if (freq[c - '0'] == 0)
-                continue;
-            freq_c.emplace_back(freq[c - '0'], c);
+    static bool comp(pair<int,char> ch1, pair<int,char> ch2){
+        return ch1.first > ch2.first;
+    }
+    string frequencySort(string s) {
+        vector<pair<int,char>> arr(123);
+        for(auto ch : s){
+            int freq = arr[ch].first;
+            arr[ch] = {freq+1, ch};
         }
-        sort(freq_c.begin(), freq_c.end(), greater<int_char>());
-        string ans;
-        for (auto &[n, c] : freq_c)
-        {
-            ans += string(n, c);
+        sort(arr.begin(), arr.end(), comp);
+        string ans = "";
+        for(int i=0;i<123;++i){
+            if(arr[i].first > 0){
+                int freq = arr[i].first;
+                char ch = arr[i].second;
+                while(freq--) ans+=ch; 
+            }
         }
         return ans;
+
     }
 };
