@@ -30,10 +30,9 @@ public:
         int n = s.size();
         if (n <= 1)
             return s;
-        int st = 0, end = 0;
+        int start = 0;
         int maxlen = -1;
-        vector<int> rel;
-        for (int i = 0; i < n - 1; ++i)
+        for (int i = 0; i < n; ++i)
         {
             int l = i, r = i;
             while (l >= 0 && r < n)
@@ -49,11 +48,10 @@ public:
             if (len > maxlen)
             {
                 maxlen = len;
-                st = l + 1;
-                end = r - 1;
+                start = l + 1;
             }
         }
-        for (int i = 0; i < n - 1; ++i)
+        for (int i = 0; i < n; ++i)
         {
             int l = i, r = i + 1;
             while (l >= 0 && r < n)
@@ -69,10 +67,9 @@ public:
             if (len > maxlen)
             {
                 maxlen = len;
-                st = l + 1;
-                end = r - 1;
+                start = l + 1;
             }
         }
-        return s.substr(st, maxlen);
+        return s.substr(start, maxlen);
     }
 };

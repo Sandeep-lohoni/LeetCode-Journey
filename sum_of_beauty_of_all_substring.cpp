@@ -26,17 +26,17 @@ class Solution
 public:
     int beauty(vector<int> &arr)
     {
-        int mf = -1;
-        int lf = 1e9;
+        int mostfreq = -1;
+        int leastfreq = 1e9;
         for (int i = 0; i < 26; ++i)
         {
-            mf = max(mf, arr[i]);
+            mostfreq = max(mostfreq, arr[i]);
             if (arr[i] >= 1)
             {
-                lf = min(lf, arr[i]);
+                leastfreq = min(leastfreq, arr[i]);
             }
         }
-        return mf - lf;
+        return mostfreq - leastfreq;
     }
     int beautySum(string s)
     {
